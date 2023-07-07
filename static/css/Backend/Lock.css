@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.Login-body {
+  margin-top: 3vh;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.image-container {
+  text-align: center;
+}
+
+img {
+  margin-top: 10vh;
+  width: 30vh;
+}
+
+form {
+  background-color: #204d82;
+  height: 33vh;
+  padding: 6vh;
+  color: #fff;
+  border-radius: 2vh;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 500;
+  font-size: 5vh;
+  margin-bottom: 3vh;
+}
+
+label {
+  display: block;
+  font-size: 2.4vh;
+}
+
+input {
+  outline: none;
+  width: 50vh;
+  height: 5vh;
+  color: #fff;
+  padding: 1vh;
+  background: none;
+  border: none;
+  border-bottom: 0.2vh solid #092858;
+  margin-bottom: 3vh;
+}
+
+input:focus {
+  border-bottom: 0.2vh solid #fff;
+}
+
+button {
+  float: right;
+  width: 15vh;
+  font-size: 2.5vh;
+  background: #2d92d4;
+  border: none;
+  border-radius: 2vh;
+  padding: 2vh;
+  transition: background-image 0.1s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #092858;
+  transform: scale(1.1);
+  animation: 1s alternate;
+}

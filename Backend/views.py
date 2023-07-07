@@ -1,7 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
-def home(request):
-    return render(request, "Backend/AdminPanel.html")
+def AdminLogin(request):
+    return render(request, 'auth/Lock.html')
+
+def Dashboard(request):
+    return render(request, "Backend/Dashboard.html")
+
+def UserManagement(request):
+    return render(request, 'Backend/ManageUser.html')

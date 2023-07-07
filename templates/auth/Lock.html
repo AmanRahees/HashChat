@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HastChat | Admin Login</title>
+    <link rel="stylesheet" href="{% static 'css/Backend/Lock.css' %}" />
+  </head>
+  <body>
+    <div class="image-container">
+      <img src="{% static 'img/Chat-logo.png' %}" alt="Logo" />
+    </div>
+    <div class="Login-body">
+      <form method="post">
+        <h1>Login</h1>
+        <div>
+          <label>Email</label>
+          <input type="text" name="email" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" name="password" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

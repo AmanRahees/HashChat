@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+}
+
+body {
+  overflow: scroll;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(220deg, #fff, #2d92d4);
+}
+
+.image-container {
+  margin-bottom: 0vh;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.lg-btn {
+  padding: 10%;
+  font-size: medium;
+  cursor: pointer;
+  color: #fff;
+  background-image: linear-gradient(260deg, #51c6dd, #156ab6);
+  border: none;
+  border-radius: 5px;
+  transition: background-image 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.lg-btn:hover {
+  background: #156ab6;
+  transform: scale(1.1);
+  animation: button-pulse 1s infinite alternate;
+}

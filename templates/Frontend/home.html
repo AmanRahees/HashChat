@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HashChat</title>
+    <link rel="icon" href="{% static 'img/Chat-icon.png' %}" />
+
+    <!-- CSS -->
+    {% block css %}
+    <link href="{% static 'css/Frontend/home.css' %}" rel="stylesheet" />
+    {% endblock %}
+  </head>
+  <body>
+    <div class="logo-container">
+      <div class="image-container">
+        <img src="{% static 'img/Chat-logo.png' %}" alt="Logo" width="300px" />
+      </div>
+      <div class="button-container">
+        <a class="lg-btn" href="{% url 'admin-panel' %}">Login</a>
+        <a class="lg-btn" href="{% url 'admin-panel' %}">SignUp</a>
+      </div>
+    </div>
+  </body>
+</html>

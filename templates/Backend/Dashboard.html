@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'img/Chat-icon.png' %}" />
+    <title>HastChat | Admin</title>
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/Backend/panel.css' %}" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      a {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="top">
+        <div class="logo">
+          <img src="{% static 'img/Chat-icon.png' %}" width="40px" />
+          <span>CHAT!</span>
+        </div>
+        <i class="fa-solid fa-bars" id="btn"></i>
+      </div>
+      <div class="user">
+        <img class="user-img" src="{% static 'img/pxfuel.jpg' %}" />
+        <div>
+          <p class="bold" style="font-size: 16px">Aman Rahees</p>
+          <p>Admin</p>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <a href="{% url 'admin-panel' %}">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span class="nav-item">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a href="{% url 'manage-users' %}">
+            <i class="fa-solid fa-users"></i>
+            <span class="nav-item">Users</span>
+          </a>
+          <span class="tooltip">Users</span>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa-solid fa-table-list"></i>
+            <span class="nav-item">Notifications</span>
+          </a>
+          <span class="tooltip">Notifications</span>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa-solid fa-comments"></i>
+            <span class="nav-item">Messages</span>
+          </a>
+          <span class="tooltip">Messages</span>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa-solid fa-power-off"></i>
+            <span class="nav-item">Logout</span>
+          </a>
+          <span class="tooltip">Logout</span>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      {% block content %}
+      <div class="container">
+        <a href="{% url 'manage-users' %}">
+          <div class="d-card bg-lgr">
+            <i class="fa-solid fa-user-plus col-org"></i>
+            <p>Users</p>
+            <h2>4+</h2>
+          </div>
+        </a>
+        <a href="">
+          <div class="d-card bg-lgt">
+            <i class="fa-solid fa-envelope"></i>
+            <p>Inbox</p>
+            <h2>4+</h2>
+          </div>
+        </a>
+        <a href="">
+          <div class="d-card bg-daq">
+            <i class="fa-solid fa-crown col-gd"></i>
+            <p>Premium</p>
+            <h2>4+</h2>
+          </div>
+        </a>
+        <a href="">
+          <div class="d-card bg-dav">
+            <i class="fa-solid fa-user-large-slash col-rd"></i>
+            <p>Blocked Users</p>
+            <h2>4+</h2>
+          </div>
+        </a>
+      </div>
+      {% endblock %}
+    </div>
+    <script src="{% static 'js/panel.js' %}"></script>
+  </body>
+</html>

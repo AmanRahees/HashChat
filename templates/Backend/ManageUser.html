@@ -1,0 +1,42 @@
+{% extends 'Backend/Dashboard.html' %} {% load static %}
+
+<!-- Block  -->
+{% block content %}
+<!-- search box -->
+{% include 'includes/searchbox.html' %}
+
+<div class="main">
+  <h1>Users</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>#1</td>
+      <td>Aman</td>
+      <td>Aman@gmail.com</td>
+      <td>623576</td>
+      <td>
+        <span class="text-gr">Active</span>
+        <span class="text-rd">Blocked</span>
+      </td>
+      <td>
+        <button class="btn-rd">
+          <i class="fa-solid fa-user-large-slash"></i> Block
+        </button>
+        <button class="btn-gr">
+          <i class="fa-solid fa-user-shield"></i> Unblock
+        </button>
+      </td>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
