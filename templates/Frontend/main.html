@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="icon" href="{% static 'img/Chat-icon.png' %}" />
+    <title>HashChat</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/Frontend/main.css' %}" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="main-bar">
+      <div class="main-top">
+        <div class="logo">
+          <img src="{% static 'img/Chat-icon.png' %}" />
+        </div>
+      </div>
+      <div class="user">
+        <img
+          class="user-img"
+          src="{% static 'img/pxfuel.jpg' %}"
+          title="@{{request.user}}"
+        />
+      </div>
+      <ul>
+        <li>
+          <a href=""> <i class="fa-solid fa-comments"></i> Chats</a>
+        </li>
+        <li>
+          <a href=""> <i class="fa-solid fa-video"></i> Meet </a>
+        </li>
+        <li>
+          <a href=""> <i class="fa-solid fa-gear"></i>settings </a>
+        </li>
+      </ul>
+      <a class="log-btn" title="Logout" href=""
+        ><i class="fa-solid fa-power-off"></i
+      ></a>
+    </div>
+    <div class="main-chat">
+      <h1>laskjdfalskjflsakdf;lasjflasdjflaskdjflasjfalskj</h1>
+    </div>
+  </body>
+</html>

@@ -34,7 +34,9 @@
       <div class="user">
         <img class="user-img" src="{% static 'img/pxfuel.jpg' %}" />
         <div>
-          <p class="bold" style="font-size: 16px">Aman Rahees</p>
+          <p class="bold" style="font-size: 16px; text-transform: capitalize">
+            {{request.user}}
+          </p>
           <p>Admin</p>
         </div>
       </div>
@@ -68,7 +70,7 @@
           <span class="tooltip">Messages</span>
         </li>
         <li>
-          <a href="">
+          <a href="{% url 'admin-logout' %}">
             <i class="fa-solid fa-power-off"></i>
             <span class="nav-item">Logout</span>
           </a>

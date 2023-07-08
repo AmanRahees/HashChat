@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'img/Chat-icon.png' %}" />
+    <title>HashChat | Login</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/Frontend/Login.css' %}" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        background-image: url('{% static "img/bbg.png" %}');
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sgp-bd">
+      <form method="post">
+        {% csrf_token %}
+        <h1>Login</h1>
+        {% include 'includes/error.html' %}
+        <div>
+          <label>Email</label>
+          <input type="text" name="email" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" name="password" id="id_password" />
+        </div>
+        <span><input type="checkbox" id="togglePassword" /> show</span>
+        <button>Submit</button>
+        <p>
+          Don't have account?
+          <a href="{% url 'user-signup' %}">Register</a>
+        </p>
+      </form>
+    </div>
+
+    <script>
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#id_password");
+
+      togglePassword.addEventListener("click", function (e) {
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+      });
+    </script>
+  </body>
+</html>

@@ -13,35 +13,28 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.Login-body {
+.sgp-bd {
   margin-top: 3vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100vh;
-}
-
-.image-container {
-  text-align: center;
-}
-
-img {
-  margin-top: 10vh;
-  width: 30vh;
 }
 
 form {
   background-color: #204d82;
-  height: 33vh;
+  height: auto;
   padding: 6vh;
   color: #fff;
   border-radius: 2vh;
+  box-shadow: 0 0.8rem 1rem #111;
 }
 
-h1 {
-  text-align: center;
+form h1 {
+  font-size: 6vh;
   font-weight: 500;
-  font-size: 5vh;
-  margin-bottom: 1vh;
+  margin-bottom: 2vh;
+  text-align: center;
 }
 
 label {
@@ -49,16 +42,17 @@ label {
   font-size: 2.4vh;
 }
 
-input {
+form input {
   outline: none;
   width: 50vh;
   height: 5vh;
-  color: #fff;
+  color: #99c1dc;
   padding: 1vh;
   background: none;
   border: none;
   border-bottom: 0.2vh solid #092858;
   margin-bottom: 3vh;
+  font-size: 2.5vh;
 }
 
 input:focus {
@@ -66,8 +60,7 @@ input:focus {
 }
 
 button {
-  float: right;
-  width: 15vh;
+  width: 52vh;
   font-size: 2.5vh;
   background: #2d92d4;
   border: none;
@@ -80,6 +73,20 @@ button {
 button:hover {
   color: #fff;
   background-color: #092858;
-  transform: scale(1.1);
+  transform: scale(1.03);
   animation: 1s alternate;
+}
+
+p {
+  text-align: center;
+  margin-top: 3vh;
+  font-size: 2.5vh;
+}
+
+p a {
+  color: #2d92d4;
+}
+
+p a:hover {
+  color: #111;
 }

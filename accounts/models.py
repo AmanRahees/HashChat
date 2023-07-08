@@ -37,6 +37,8 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser):
     username = models.CharField(max_length=30, unique=True)
     email = models.EmailField(max_length=100, unique=True)
+    profile_picture = models.ImageField(upload_to='profiles/', null=True, blank=True)
+    about = models.CharField(max_length=200, default='Available')
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
@@ -45,8 +47,8 @@ class CustomUser(AbstractBaseUser):
     last_login = models.DateTimeField(auto_now_add=True)
 
     objects = CustomUserManager()
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
 
     def __str__(self):
         return self.username

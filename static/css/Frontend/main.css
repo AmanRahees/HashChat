@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+}
+
+body {
+  overflow: scroll;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.main-bar {
+  position: absolute;
+  height: 97.6vh;
+  width: 10vh;
+  background-color: #111;
+  padding: 0.4rem 0.8rem;
+}
+
+.logo {
+  margin: 2vh 1.5vh;
+}
+
+.logo img {
+  width: 8vh;
+}
+
+.user-img {
+  width: 8vh;
+  padding: 1.5vh;
+  border-radius: 100%;
+}
+
+.main-bar ul {
+  margin-top: 10vh;
+}
+
+.main-bar ul li {
+  list-style-type: none;
+  text-align: center;
+  padding: 1.5vh;
+  margin-top: 3vh;
+  cursor: pointer;
+}
+
+.main-bar ul li:hover {
+  background-color: #fff;
+  border-radius: 1vh;
+}
+
+.main-bar ul li:hover a {
+  color: #111;
+}
+
+.main-bar ul li a {
+  color: #fff;
+  font-size: 1.8vh;
+}
+
+.main-bar ul li a i {
+  font-size: 3.6vh;
+}
+
+.log-btn {
+  position: absolute;
+  padding: 1vh 1.5vh;
+  margin-top: 20vh;
+  left: 4vh;
+  color: white;
+  font-size: 3vh;
+  border-radius: 100%;
+}
+
+.log-btn:hover {
+  color: red;
+  border-color: red;
+}
+
+/*----------------------------------- Chat-Users--------------------------------- */

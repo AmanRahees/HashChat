@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HastChat | Admin Login</title>
     <link rel="stylesheet" href="{% static 'css/Backend/Lock.css' %}" />
+    <style>
+      body {
+        background-image: url("{% static 'img/bbg.png' %}");
+      }
+    </style>
   </head>
   <body>
     <div class="image-container">
@@ -13,7 +18,9 @@
     </div>
     <div class="Login-body">
       <form method="post">
+        {% csrf_token %}
         <h1>Login</h1>
+        {% include 'includes/error.html' %}
         <div>
           <label>Email</label>
           <input type="text" name="email" />
