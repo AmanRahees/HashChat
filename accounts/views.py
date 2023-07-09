@@ -10,7 +10,7 @@ from accounts.otp import *
 @never_cache
 def UserSingup(request):
     if request.user.is_authenticated:
-        return redirect('profile')
+        return redirect('settings')
     else:
         if request.method == "POST":
             username = request.POST.get('username')
@@ -29,7 +29,7 @@ def UserSingup(request):
                     user.is_active = True
                     user.save()
                     login(request, user)
-                    return redirect('profile')
+                    return redirect('settings')
                     # send_otp(user.email)
                     # request.session['email']=user.email
                     # return redirect('otp-verify')
@@ -42,7 +42,7 @@ def UserSingup(request):
 @never_cache
 def UserLogin(request):
     if request.user.is_authenticated:
-        return redirect('profile')
+        return redirect('settings')
     else:
         if request.method == 'POST':
             email = request.POST.get('email')
@@ -50,7 +50,7 @@ def UserLogin(request):
             user = authenticate(request, email=email, password=password)    
             if user is not None:
                 login(request, user)
-                return redirect('profile')
+                return redirect('settings')
             else:
                 if CustomUser.objects.filter(is_active = False):
                     messages.info(request, 'Your Account has been Suspended')
@@ -64,7 +64,7 @@ def UserLogin(request):
 @never_cache
 def otp_verify(request):
     if request.user.is_authenticated:
-        return redirect('profile')
+        return redirect('settings')
     else:
         email=request.session['email']
         print(email, 'in session')
@@ -84,3 +84,7 @@ def otp_verify(request):
         else:
             return render(request, 'auth/OTP.html')
         
+@never_cache
+def UserLogout(request):
+    logout(request)
+    return redirect('user-login')

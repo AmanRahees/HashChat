@@ -1,0 +1,91 @@
+.pfl-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pic-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pic-container img {
+  width: 25vh;
+  height: 25vh;
+  border-radius: 100%;
+  border: 2px solid #2e343d;
+  margin-top: 3vh;
+}
+
+.file-label input[type="file"] {
+  display: none;
+}
+
+.file-label i {
+  position: absolute;
+  background-color: #00ab58;
+  color: azure;
+  padding: 1vh;
+  border-radius: 100%;
+  top: 20vh;
+  right: 55vh;
+  cursor: pointer;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
+  align-items: center;
+}
+
+.input-container {
+  margin: 5vh 0;
+}
+
+.input-container label {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  color: #474f5b;
+  font-size: 2.3vh;
+}
+
+.input-container input {
+  width: 70vh;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 1vh;
+  color: #fff;
+  font-size: 3vh;
+  margin-left: 2vh;
+}
+
+.input-container input:enabled {
+  border-bottom: 2px solid #2e343d;
+}
+
+.input-container h3 {
+  padding: 1vh;
+  color: #fff;
+  font-size: 3vh;
+  font-weight: 500;
+  margin-left: 2vh;
+}
+
+.fa-pen {
+  color: #00ab58;
+  cursor: pointer;
+}
+
+.form-container button {
+  background-color: #00ab58;
+  font-size: 2.6vh;
+  padding: 1vh 2vh;
+  color: #fff;
+  border-radius: 1vh;
+  float: right;
+  display: none;
+  cursor: pointer;
+}

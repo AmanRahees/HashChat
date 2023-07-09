@@ -1,0 +1,87 @@
+{% extends 'Frontend/main.html' %} {% load static %}
+
+<!-- Content  -->
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/Frontend/profile.css' %}" />
+
+<div class="pfl-body">
+  <div class="pic-container">
+    {% if request.user.profile_picture %}
+    <img src="{{request.user.profile_picture.url}}" />
+    {% else %}
+    <img src="{% static 'img/default.png' %}" />
+    {% endif %}
+    <form
+      method="post"
+      action="{% url 'change-picture' %}"
+      enctype="multipart/form-data"
+      id="myForm"
+    >
+      {% csrf_token %}
+      <label class="file-label">
+        <input id="file-input" type="file" name="picture" />
+        <i class="fa-solid fa-camera"></i>
+      </label>
+    </form>
+  </div>
+  <div class="form-container">
+    <form method="post" oninput="checkFormChanges()">
+      {% csrf_token %}
+      <div class="input-container">
+        <label>Username</label>
+        <label>
+          <i class="fas fa-user"></i>
+          <input
+            id="username-input"
+            name="username"
+            disabled
+            type="text"
+            value="{{request.user}}"
+            maxlength="20"
+          />
+          <i
+            class="fa-solid fa-pen"
+            onclick="toggleInput('username-input')"
+          ></i>
+        </label>
+      </div>
+      <div class="input-container">
+        <label>About</label>
+        <label>
+          <i class="fa-solid fa-circle-info"></i>
+          <input
+            id="about-input"
+            name="about"
+            disabled
+            type="text"
+            required
+            value="{{request.user.about}}"
+            maxlength="30"
+          />
+          <i class="fa-solid fa-pen" onclick="toggleInput('about-input')"></i>
+        </label>
+      </div>
+      <div class="input-container">
+        <label>Email</label>
+        <label>
+          <i class="fa-solid fa-envelope"></i>
+          <h3>{{request.user.email}}</h3>
+        </label>
+      </div>
+      <button id="save-button" type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+<!-- Js  -->
+<script src="{% static 'js/profile.js' %}"></script>
+<script>
+  const imgInput = document.getElementById("file-input");
+  const imgform = document.getElementById("myForm");
+
+  imgInput.addEventListener("change", () => {
+    imgform.submit();
+  });
+</script>
+
+{% endblock %}
