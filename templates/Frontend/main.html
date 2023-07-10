@@ -40,8 +40,8 @@
         <li {% if request.resolver_match.url_name == 'chats' %} class="list-active" {% endif %}>
           <a href="{% url 'chats' %}" {% if request.resolver_match.url_name == 'chats' %} style="color: #111;" {% endif %}> <i class="fa-solid fa-comments"></i> Chats</a>
         </li>
-        <li {% if request.resolver_match.url_name == '' %} class="list-active" {% endif %}>
-          <a href="" {% if request.resolver_match.url_name == '' %} style="color: #111;" {% endif %}> <i class="fa-solid fa-user-plus"></i> Add&nbsp; </a>
+        <li {% if request.resolver_match.url_name == 'add-friends' %} class="list-active" {% endif %}>
+          <a href="{% url 'add-friends' %}" {% if request.resolver_match.url_name == 'add-friends' %} style="color: #111;" {% endif %}> <i class="fa-solid fa-user-plus"></i> Add&nbsp; </a>
         </li>
         <li {% if request.resolver_match.url_name == 'settings' %} class="list-active" {% endif %}>
           <a href="{% url 'settings' %}" {% if request.resolver_match.url_name == 'settings' %} style="color: #111;" {% endif %}> <i class="fa-solid fa-gear"></i>settings </a>
@@ -60,7 +60,11 @@
         <div class="ls-fds">
           <div class="ls-container">
             <p>&#9673;</p>
+            {% if request.user.profile_picture %}
             <img src="{{request.user.profile_picture.url}}" />
+            {% else %}
+            <img src="{% static 'img/default.png' %}" />
+            {% endif %}
             <div>
               <h4>Aman</h4>
               <sup>Available</sup>
