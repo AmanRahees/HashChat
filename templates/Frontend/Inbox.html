@@ -1,0 +1,43 @@
+{% extends 'Frontend/main.html' %}
+<!-- Static -->
+{% load static %}
+<!-- Content -->
+{% block content %}
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/Frontend/Inbox.css' %}" />
+<!-- Body -->
+<div class="inbox-body">
+  <div class="inbox-filter">
+    <div class="filter-container">
+      {% if total != 0 %}
+      <a href="{% url 'mark-all' %}">mark all</a>
+      {% else %}
+      <a style="cursor: default">marked all</a>
+      {% endif %}
+      <!-- <button>Filter <i class="fa-solid fa-caret-down"></i></button> -->
+    </div>
+  </div>
+  <div class="inbox-container">
+    {% for i in notification %} {% if i.type == "Request" %}
+    <div class="card">
+      <p><i class="fa-solid fa-user-plus"></i> {{i.content}}</p>
+      <div>
+        <a class="apt" href="{% url 'accept-request' i.sender.id %}">Accept</a>
+        <a class="dcl" href="{% url 'decline-request' i.sender.id %}"
+          >Decline</a
+        >
+      </div>
+    </div>
+    {% else %}
+    <div class="card">
+      <p><i class="fa-solid fa-envelope"></i> {{i.content}}</p>
+      {% if i.status == False %}
+      <a class="mark" href="{% url 'mark-as-read' i.id %}">mark as read</a>
+      {% else %}
+      <a class="marked">marked</a>
+      {% endif %}
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</div>
+{% endblock %}

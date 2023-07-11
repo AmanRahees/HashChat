@@ -13,7 +13,6 @@ class FriendRequest(models.Model):
         return f"Friend Request from {self.user_send} to {self.user_received}"
     
 class Friend(models.Model):
-    frnd_req = models.ForeignKey(FriendRequest, on_delete=models.CASCADE)
     user1 = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='frnd_1')
     user2 = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='frnd_2')
 
@@ -21,7 +20,7 @@ class Friend(models.Model):
         return f"{self.user1} ---------- {self.user2}"
 
 class Conversation(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     user1 = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_1')
     user2 = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_2')
 
@@ -38,3 +37,14 @@ class Message(models.Model):
 
     def __str__(self):
         return f"{self.sender} -----> {self.receiver}"
+    
+class Notifications(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='user_inbox')
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sender')
+    content = models.CharField(max_length=786)
+    type = models.CharField(max_length=30, default='Request')
+    time = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Notification for {self.user}"

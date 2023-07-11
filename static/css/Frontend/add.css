@@ -66,6 +66,12 @@
   white-space: nowrap;
 }
 
+.lst-card .abt {
+  line-height: 0;
+  font-size: 2vh;
+  color: #5d606a;
+}
+
 .rq-1 {
   width: 100%;
 }

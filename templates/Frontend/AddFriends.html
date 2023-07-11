@@ -14,19 +14,27 @@
     </label>
   </div>
   <div class="frnds-lst">
-    {% for i in users %}
+    {% for i,j in data %}
     <div class="lst-card">
       {% if i.profile_picture %}
       <img src="{{i.profile_picture.url}}" />
       {% else %}
       <img src="{% static 'img/default.png' %}" />
       {% endif %}
-      <p>#{{i.username}}</p>
+      <div>
+        <p>#{{i.username}}</p>
+        <p class="abt">{{i.about}}</p>
+      </div>
       <div class="rq-1">
-        <a href=""><i class="fa-solid fa-user-plus"></i></a>
-        <!-- <a href="" class="rq-std"
-          ><i class="fa-solid fa-user-plus"></i> requested</a
-        > -->
+        {% if j %}
+        <a href="{% url 'cancel-request' i.id %}" class="rq-std"
+          ><i class="fa-solid fa-user-plus"></i> requested{{j.status}}</a
+        >
+        {% else %}
+        <a href="{% url 'send-request' id=i.id %}"
+          ><i class="fa-solid fa-user-plus"></i
+        ></a>
+        {% endif %}
       </div>
     </div>
     {% endfor %}

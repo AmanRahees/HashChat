@@ -46,6 +46,9 @@
         <li {% if request.resolver_match.url_name == 'settings' %} class="list-active" {% endif %}>
           <a href="{% url 'settings' %}" {% if request.resolver_match.url_name == 'settings' %} style="color: #111;" {% endif %}> <i class="fa-solid fa-gear"></i>settings </a>
         </li>
+        <li {% if request.resolver_match.url_name == 'inbox' %} class="list-active" {% endif %}>
+          <a href="{% url 'inbox' %}" {% if request.resolver_match.url_name == 'inbox' %} style="color: #111;" {% endif %}> <i class="fa-solid fa-envelope-open-text"></i><sup>{{total}}</sup>Inbox </a>
+        </li>
       </ul>
       <a class="log-btn" title="Logout" href="{% url 'user-logout' %}"
         ><i class="fa-solid fa-power-off"></i
@@ -58,76 +61,52 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         <div class="ls-fds">
+          {% for friend in myFriends %}
+          {% if friend.user1 == request.user %}
+          <a href="{% url 'show-chats' friend.user2.id %}">
           <div class="ls-container">
             <p>&#9673;</p>
-            {% if request.user.profile_picture %}
-            <img src="{{request.user.profile_picture.url}}" />
+            {% if friend.user2.profile_picture %}
+            <img src="{{friend.user2.profile_picture.url}}" />
             {% else %}
             <img src="{% static 'img/default.png' %}" />
             {% endif %}
             <div>
-              <h4>Aman</h4>
-              <sup>Available</sup>
+              <h4>#{{friend.user2.username}}</h4>
+              <sup>{{friend.user2.about}}</sup>
             </div>
           </div>
+          </a>
+          {% else %}
+          <a href="{% url 'show-chats' friend.user1.id %}">
           <div class="ls-container">
             <p>&#9673;</p>
-            <img src="{% static 'img/pxfuel.jpg' %}" />
+            {% if friend.user1.profile_picture %}
+            <img src="{{friend.user1.profile_picture.url}}" />
+            {% else %}
+            <img src="{% static 'img/default.png' %}" />
+            {% endif %}
             <div>
-              <h4>Cristiano</h4>
-              <sup>Available</sup>
+              <h4>#{{friend.user1.username}}</h4>
+              <sup>{{friend.user1.about}}</sup>
             </div>
           </div>
+          </a>
+          {% endif %}
+          {% endfor %}
         </div>
       </div>
     </div>
     <div class="chat-body">
       <div class="chat-container">
         {% block content %}
-        <div class="chat-nav">
-          <img src="{% static 'img/pxfuel.jpg' %}" />
-          <div>
-            <h4>Aman</h4>
-            <span>Online</span>
-          </div>
-          <div class="opt-icons">
-            <a href="#"><i class="fa-solid fa-phone"></i></a>
-            <a href="#"><i class="fa-solid fa-video"></i></a>
-            <button class="dropdown-btn">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="block"><i class="fa-solid fa-ban"></i>Block</a>
-            </div>
-          </div>
-        </div>
-        <div class="chat-content">
-          <div class="msg-any">
-            <p>Hi, Aman <sub>09:30 PM</sub></p>
-          </div>
-          <div class="msg-usr">
-            <p>Hi, Cristiano <sub>09:30 PM</sub></p>
-          </div>
-          <div class="msg-usr">
-            <p>How are you bro? <sub>09:30 PM</sub></p>
-          </div>
-        </div>
-        <div class="chat-opts">
-          <form method="post">
-            <div class="input-group">
-              <textarea name="" placeholder="Message"></textarea>
-              <div class="textarea-overlay">
-                <i class="fa-solid fa-face-laugh"></i>
-                <i id="fileUploadBtn" class="fa-solid fa-camera"></i>
-                <button><i class="fa-solid fa-paper-plane"></i></button>
-              </div>
-            </div>
-            <input type="file" id="fileInput" style="display: none" />
-          </form>
+        <div class="f-pg" style="position: absolute; margin-top: 35vh; margin-left: 50vh; text-align: center; color: #fff;">
+          <img style="width:40vh; " src="{% static 'img/Chat-logo.png' %}">
+          <p>Welcome to world of #'s!</p>
         </div>
         {% endblock %}
       </div>
     </div>
-    <script src="{% static 'js/main.js' %}"></script>
+    
   </body>
 </html>

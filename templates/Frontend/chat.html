@@ -1,0 +1,54 @@
+{% extends 'Frontend/main.html' %}
+<!-- Load Static -->
+{% load static %}
+
+<!-- content  -->
+{% block content %}
+<div class="chat-nav">
+  {% if frnd.profile_picture %}
+  <img src="{{frnd.profile_picture.url}}" />
+  {% else %}
+  <img src="{% static 'img/default.png' %}" />
+  {% endif %}
+  <div>
+    <h4>#{{frnd.username}}</h4>
+    <span>Online</span>
+  </div>
+  <div class="opt-icons">
+    <a href="#"><i class="fa-solid fa-phone"></i></a>
+    <a href="#"><i class="fa-solid fa-video"></i></a>
+    <button class="dropdown-btn">
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#" id="block"><i class="fa-solid fa-ban"></i>Block</a>
+    </div>
+  </div>
+</div>
+<div class="chat-content">
+  {% for i in msg %} {% if i.sender == request.user %}
+  <div class="msg-usr">
+    <p>{{i.content}} <sub>{{i.time}} &#10003; </sub></p>
+  </div>
+  {% else %}
+  <div class="msg-any">
+    <p>{{i.content}} <sub>{{i.time}}</sub></p>
+  </div>
+  {% endif %} {% endfor %}
+</div>
+<div class="chat-opts">
+  <form method="post">
+    <div class="input-group">
+      <textarea name="" placeholder="Message"></textarea>
+      <div class="textarea-overlay">
+        <i class="fa-solid fa-face-laugh"></i>
+        <i id="fileUploadBtn" class="fa-solid fa-camera"></i>
+        <button><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <input type="file" id="fileInput" style="display: none" />
+  </form>
+</div>
+
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

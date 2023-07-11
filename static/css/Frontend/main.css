@@ -38,7 +38,7 @@ body::-webkit-scrollbar {
 }
 
 .main-bar ul {
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 
 .main-bar ul li {
@@ -72,10 +72,18 @@ body::-webkit-scrollbar {
   font-size: 3.6vh;
 }
 
+.main-bar ul li a sup {
+  position: absolute;
+  background-color: #0bcb21;
+  padding: 0.3vh 0.6vh;
+  right: 4.5vh;
+  border-radius: 100%;
+}
+
 .log-btn {
   position: absolute;
   padding: 1vh 1.5vh;
-  margin-top: 20vh;
+  margin-top: 12vh;
   left: 4vh;
   color: white;
   font-size: 3vh;
