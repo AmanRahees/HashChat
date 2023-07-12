@@ -3,7 +3,7 @@
 {% load static %}
 
 <!-- content  -->
-{% block content %}
+{% block content %} {% now "Ymd" as current_date %}
 <div class="chat-nav">
   {% if frnd.profile_picture %}
   <img src="{{frnd.profile_picture.url}}" />
@@ -28,11 +28,33 @@
 <div class="chat-content">
   {% for i in msg %} {% if i.sender == request.user %}
   <div class="msg-usr">
-    <p>{{i.content}} <sub>{{i.time}} &#10003; </sub></p>
+    <p>
+      {{i.content}} {% if i.time|date:"Ymd" == current_date %}
+      <sub>
+        {{ i.time|time:"g:i A" }} {% if i.status == True %}
+        <img src="{% static 'img/seen.png' %}" alt="seen" />
+        {% endif %}
+      </sub>
+      {% else %}
+      <sub
+        >{{ i.time|date:"F d" }}, {{ i.time|time:"g:i A" }}
+        <!-- condition -->
+        {% if i.status == True %}
+        <img src="{% static 'img/seen.png' %}" alt="seen" />
+        {% endif %}
+      </sub>
+      {% endif %}
+    </p>
   </div>
   {% else %}
   <div class="msg-any">
-    <p>{{i.content}} <sub>{{i.time}}</sub></p>
+    <p>
+      {{i.content}} {% if i.time|date:"Ymd" == current_date %}
+      <sub> {{ i.time|time:"g:i A" }}</sub>
+      {% else %}
+      <sub>{{ i.time|date:"F d" }}, {{ i.time|time:"g:i A" }}</sub>
+      {% endif %}
+    </p>
   </div>
   {% endif %} {% endfor %}
 </div>

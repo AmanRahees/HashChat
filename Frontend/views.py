@@ -27,7 +27,9 @@ def ShowChat(request, id):
     friend = CustomUser.objects.get(id=id)
     try:
         conv = Conversation.objects.get(user1=user, user2=friend)
-        msg = Message.objects.filter(conv=conv)
+        msg = Message.objects.filter(conv=conv).order_by('id')
+        unseen_messages = msg.filter(receiver=user,status=False)
+        unseen_messages.update(status=True)
     except:
         msg = []
     context = {

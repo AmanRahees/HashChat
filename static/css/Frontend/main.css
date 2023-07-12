@@ -362,6 +362,10 @@ body::-webkit-scrollbar {
   color: #b8b7b7;
 }
 
+.msg-usr p sub img {
+  width: 1.5vh;
+}
+
 /*------------------------------ Chat Options----------------------------------- */
 
 .chat-opts {
