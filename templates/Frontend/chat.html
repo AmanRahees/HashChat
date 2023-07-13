@@ -25,7 +25,7 @@
     </div>
   </div>
 </div>
-<div class="chat-content">
+<div class="chat-content" onload="scrollToBottom()" id="myScrollableDiv">
   {% for i in msg %} {% if i.sender == request.user %}
   <div class="msg-usr">
     <p>
@@ -60,15 +60,16 @@
 </div>
 <div class="chat-opts">
   <form method="post">
+    {% csrf_token %}
     <div class="input-group">
-      <textarea name="" placeholder="Message"></textarea>
+      <textarea required name="chat" placeholder="Message"></textarea>
       <div class="textarea-overlay">
-        <i class="fa-solid fa-face-laugh"></i>
-        <i id="fileUploadBtn" class="fa-solid fa-camera"></i>
-        <button><i class="fa-solid fa-paper-plane"></i></button>
+        <!-- <i class="fa-solid fa-face-laugh"></i> -->
+        <!-- <i id="fileUploadBtn" class="fa-solid fa-camera"></i> -->
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
-    <input type="file" id="fileInput" style="display: none" />
+    <!-- <input type="file" id="fileInput" style="display: none" /> -->
   </form>
 </div>
 
